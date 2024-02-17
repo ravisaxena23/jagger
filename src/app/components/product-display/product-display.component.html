@@ -1,0 +1,45 @@
+<div class="product-container">
+<div class="product-display">
+    <div class="image-thumbnails">
+        <div *ngFor="let image of product.images;let i = index" class="thumbnail-border"
+            [ngClass]="{'hide': currentImageIndex == i}">
+            <div class="thumbnail">
+                <img [src]="image.url" [alt]="image.alt" (click)="changeImage(image)" />
+            </div>
+        </div>
+    </div>
+    <div class="image-container thumbnail-border">
+        <div class="primary-button">
+            <button (click)="previousImage()" class="arrow-button">&lt;</button>
+            <img (click)="zoomOut()" class="zoom-button" src="../../../assets/zoom-out.svg"/>
+
+        </div>
+        <div class="primary-image">
+            <img [src]="currentImage.url" [alt]="currentImage.alt" [style.transform]="imageTransform" />
+        </div>
+        <div class="primary-button">
+            <button (click)="nextImage()" class="arrow-button">&gt;</button>
+            <img (click)="zoomIn()" class="zoom-button" src="../../../assets/zoom-in.svg"/>
+
+
+        </div>
+    </div>
+
+</div>
+<div class="prodcut-title">
+    <span>{{ product.name }}</span>
+    <span> by <a href={{product.supplierLink}}> {{product.supplierName}}</a></span>
+    <app-star-rating [maxStars]="5" [initialStars]="3.2"></app-star-rating>
+
+    <div> <span>{{product.price}} {{product.currency}}</span><span class="delivery"> +{{product.transport}}{{product.currency}} shipping </span><span> <img class="discount" src="../../../assets/discount.svg"/></span></div>
+    <span class="delivery">all prices incl. {{product.vat}} % taxes</span>
+
+    <div class="quantity-container">
+        <input type="number" [(ngModel)]="quantity" min="1" placeholder="Quantity"> <span class="piece">{{product.piece}}</span>
+        <button (click)="addToCart()"><img class="add" src="../../../assets/add.svg"/>Add to Cart</button>
+      </div>
+</div>
+
+
+
+</div>

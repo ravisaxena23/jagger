@@ -1,0 +1,17 @@
+<nav class="navbar bg-body-tertiary navbar-content">
+    <div class="container-fluid">
+        <span class="navbar-brand mb-0 h1 title">{{apiData?.article?.title}}</span>
+
+        <div class="nav-buttons">
+            
+            <div class="nav-icons" (click)="toggleFavorite()">
+                <img [src]="isFavorite ? '../../../assets/favorite-filled.svg' : '../../../assets/favorite.svg'" />
+            </div>
+            <div class="nav-icons" (click)="openFacts()"> <img  src="../../../assets/facts-soft.svg" /></div>
+            <div class="count" *ngIf="productService.quantity">{{productService.quantity}}</div>
+            <div class="nav-icons border-left" (click)="openCart()"><img src="../../../assets/cart.svg" /></div>
+           
+          
+        </div>
+    </div>
+</nav>

@@ -1,0 +1,53 @@
+<div class="product-description-container">
+    <div class="product-description">
+        <div class="title">DESCRIPTION</div>
+        <div class="description">{{apiData.article.description_long}}</div>
+    </div>
+
+    <div class="product-cards">
+        <div class="details-card">
+            <div class="title border-bottom"> Details</div>
+
+            <div class="sub-title">Features</div>
+            <ul class="feature-list" *ngFor="let data of features;let i = index">
+                <li class="feature-item"> <span class="sub-title key"> {{data.key}} :</span> <span
+                        class="value">{{data.value}} </span> </li>
+            </ul>
+
+            <div class="sub-title">Attachments</div>
+            <ul class="attachment-list" *ngFor="let attachment of apiData.article.attachments;let i = index">
+                <li class="attachment-item"><a href="{{attachment.file_link}}"><img class="attachment-icon"
+                            src="../../../assets/attachment.svg" />{{attachment.file_label}}</a></li>
+            </ul>
+
+            <div class="sub-title">Keywords</div>
+            <div class="keyword-list">
+                <div class="keyword" *ngFor="let keyword of apiData.article.keywords;let i = index">
+                    <span>{{keyword}}</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="pricing-card">
+            <div class="title border-bottom"> Pricing & shipping</div>
+
+            <ul>
+                <li><span class="sub-title">Minimum order:</span><span> {{apiData.article.minimum_order_quantity}} {{apiData.article.unit}}</span></li>
+                <li><span class="sub-title">Shipping:</span><span> {{apiData.article.transport_costs}} {{apiData.article.currency}}</span></li>
+                <li><span class="sub-title">Delivery:</span><span> {{apiData.article.delivery_time}} days</span></li>
+            </ul>
+
+            <div class="sub-title"> Price breaks</div>
+                <table class="table price-list">
+                      <tbody>
+                        <tr><td></td><td></td></tr>
+                        <tr *ngFor="let price of priceBreaks;let i = index">
+                          <td>ex {{price.key}} {{apiData.article.unit}}</td>
+                          <td>{{price.value}} {{apiData.article.currency}}</td>
+                        </tr>
+                      </tbody>
+                  </table>
+        </div>
+    </div>
+
+</div>

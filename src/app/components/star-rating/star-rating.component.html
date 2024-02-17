@@ -1,0 +1,6 @@
+<div class="star-rating">
+    <ng-container *ngFor="let star of stars; let i = index">
+      <span class="star" [class.full]="star <= filledStars" [class.half]="star - 0.5 === filledStars">&#9733;</span>
+    </ng-container>
+  </div>
+  
